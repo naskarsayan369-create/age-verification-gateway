@@ -13,3 +13,4 @@ Thumbs.db
 coverage/
 .nyc_output/
 *.tsbuildinfo
+.vercel
