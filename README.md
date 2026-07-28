@@ -283,4 +283,4 @@ Apache 2.0 License — see [LICENSE](LICENSE) for details.
 
 ---
 
-*Built for the Midnight Builder Challenge — demonstrating that private, verifiable, and trustless age verification is achievable today.*
+*Built for the Midnight Builder Challenge — empowering privacy-first Web3 compliance with zero-knowledge age verification on Midnight.*
