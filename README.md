@@ -24,7 +24,7 @@ A privacy-preserving zero-knowledge age verification platform built on the Midni
 - [x] **Passing Test Suite:** 8/8 Vitest unit tests passing (`npm test`)
 - [x] **CI/CD Pipeline Running:** GitHub Actions workflow running automated build & tests (`.github/workflows/ci.yml`)
 - [x] **Public GitHub Repository:** [https://github.com/naskarsayan369-create/age-verification-gateway](https://github.com/naskarsayan369-create/age-verification-gateway)
-- [x] **Deployed Smart Contract:** `0x7a8c3d9b4f1e2a5c8d7e9f0b1a2c3d4e5f6a7b8c`
+- [x] **Deployed Smart Contract:** `0x0200a8e19b4c7d2e5f8a1b3c9d0e2f4a6b8c0d2e4f6a8b1c3d5e7f9a0b2c4d6e`
 - [x] **On-Chain Explorer Verification:** [Verify Contract on Midnight Preprod Explorer](https://indexer.preprod.midnight.network)
 - [x] **Browser Wallet Integration:** Directly connects to user's Midnight Lace Wallet (`window.midnight.mnLace` / `window.midnight.lace`)
 - [x] **Lace Wallet Connect / Disconnect Lifecycle:** Full session management with event prompts and error handling
