@@ -209,14 +209,26 @@ This dApp eliminates the trade-off entirely. Using **Zero-Knowledge proofs on th
 
 ## 📁 Project Structure
 
-```
+```text
 age-verification-gateway/
-├── contract/           # Compact ZK contract (privacy logic, witnesses, tests)
-├── api/                # TypeScript API layer
-├── bboard-cli/         # Interactive CLI & Network configs
-├── bboard-ui/          # React frontend (Vite)
-├── .github/workflows/  # CI pipelines
-└── README.md           # This file
+├── contract/             # Compact ZK smart contract
+│   └── src/
+│       ├── managed/      # Compiled ZK circuits
+│       └── test/         # Contract unit tests
+├── api/                  # Midnight JS API layer
+│   └── src/
+│       ├── common-types.ts
+│       └── index.ts
+├── bboard-ui/            # React + Vite frontend
+│   └── src/
+│       ├── App.tsx       # Main application
+│       ├── contexts/     # Wallet & deployment context
+│       └── hooks/        # Custom React hooks
+├── bboard-cli/           # CLI for contract interaction
+├── .github/
+│   └── workflows/
+│       └── ci.yml        # GitHub Actions CI/CD
+└── package.json
 ```
 
 ---
