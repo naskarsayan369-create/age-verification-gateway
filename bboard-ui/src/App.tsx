@@ -857,6 +857,23 @@ const App: React.FC = () => {
             )}
           </div>
         )}
+        
+        {/* ── Footer ── */}
+        <footer style={{
+          marginTop: 60, padding: '30px 0',
+          borderTop: '1px solid rgba(139, 92, 246, 0.1)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexWrap: 'wrap', gap: 20
+        }}>
+          <div style={{ fontSize: 12, color: '#6b7280' }}>
+            &copy; {new Date().getFullYear()} Age Verification Gateway.
+          </div>
+          <div style={{ display: 'flex', gap: 20, fontSize: 12 }}>
+            <a href="#" style={{ color: '#9ca3af', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#c4b5fd'} onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}>Privacy Policy</a>
+            <a href="#" style={{ color: '#9ca3af', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#c4b5fd'} onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}>Terms of Service</a>
+            <a href="https://github.com/naskarsayan369-create/age-verification-gateway" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#c4b5fd'} onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}>GitHub</a>
+          </div>
+        </footer>
       </div>
     </div>
   );
