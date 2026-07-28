@@ -265,19 +265,22 @@ Contract Address: 0x0200a8e19b4c7d2e5f8a1b3c9d0e2f4a6b8c0d2e4f6a8b1c3d5e7f9a0b2c
 
 ## ⚙️ CI/CD Pipeline
 
-The project features a fully automated CI/CD pipeline using **GitHub Actions**.
+GitHub Actions workflow runs automatically on every push and pull request:
 
-- **CI Workflow (`ci.yml`)**: Triggers on pushes and PRs to the `main` branch.
-  - Installs Midnight Compact compiler and Node.js dependencies.
-  - Compiles the ZK contract.
-  - Runs the full automated test suite for the contract.
-  - Performs TypeScript type-checking for the React frontend, API, and CLI components.
-  - Builds the production distribution of the frontend application.
-
-[![CI](https://github.com/naskarsayan369-create/age-verification-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/naskarsayan369-create/age-verification-gateway/actions)
+```yaml
+# .github/workflows/ci.yml
+- Install dependencies (Node 22)
+- Compile Compact contract
+- Run ZK contract test suite
+- Build Vite production bundle
+```
 
 ---
 
 ## 📄 License
 
-Apache 2.0 — See [LICENSE](LICENSE)
+Apache 2.0 License — see [LICENSE](LICENSE) for details.
+
+---
+
+*Built for the Midnight Builder Challenge — demonstrating that private, verifiable, and trustless age verification is achievable today.*
