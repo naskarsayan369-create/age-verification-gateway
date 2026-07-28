@@ -188,18 +188,22 @@ Expected output:
 
 ## 🎯 Product Proposal: Age / Eligibility Gate
 
-### Problem
-Age verification today requires uploading government IDs to third-party services. This creates:
-- **Privacy risk**: ID data is stored centrally, a prime target for breaches
-- **Friction**: Users abandon sign-up when ID scanning is required
-- **Liability**: Platforms are responsible for securely storing age data
+The **Age Verification Gateway** solves a fundamental problem in online compliance: **how do you verify a user's age without collecting or exposing their sensitive personal data?**
 
-### Solution
-The Age Verification Gateway uses **zero-knowledge proofs** on Midnight to verify age without collecting any personal data:
-1. The user enters their birth year **locally in their browser**
-2. A ZK circuit computes `age = currentYear - birthYear` and checks `age >= minimumAge`
-3. Only the **boolean result** (pass/fail) is submitted on-chain — no birth year, no identity
-4. The platform receives cryptographic proof of eligibility
+Traditional digital age verification forces a painful trade-off:
+
+- **Public ledgers** expose user birthdates and identities — destroying personal privacy
+- **Private databases** store government IDs on central servers — creating prime targets for data breaches
+
+This dApp eliminates the trade-off entirely. Using **Zero-Knowledge proofs on the Midnight blockchain**, users verify their age through a ZK circuit that mathematically proves eligibility *without revealing the birthdate itself*. The verification outcome is completely verifiable by anyone, while individual private details remain permanently private.
+
+**Use cases:**
+
+- Alcohol & tobacco e-commerce (18+ / 21+)
+- Adult content platforms & gaming age gates
+- Gambling & sports betting compliance
+- Pharmaceutical platforms for age-restricted products
+- Any scenario requiring privacy-preserving regulatory age checks
 
 ---
 
