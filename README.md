@@ -104,42 +104,58 @@ The wallet connector supports:
 
 ## 🚀 Quickstart & Local Installation
 
-### Prerequisites
-| Tool | Version | Notes |
-|------|---------|-------|
-| Node.js | ≥ 22 | Use NVM: `nvm use 22` |
-| compact | 0.5.1+ | Installed via `npm install` |
-| Docker | Desktop 4.x | Required for local testnet |
-| WSL 2 | Ubuntu | Required for Midnight CLI tools |
+**Clone the repository:**
 
-> **Docker Note:** Enable WSL integration in Docker Desktop Settings → Resources → WSL Integration → Enable for your Ubuntu distro.
-
-### 1. Clone & Install
 ```bash
-# In WSL Ubuntu
-cd ~/midnight-projects/age-verification-gateway
+git clone https://github.com/naskarsayan369-create/age-verification-gateway.git
+cd age-verification-gateway
+```
+
+**Set Node version and install dependencies:**
+
+```bash
+nvm use 22
 npm install
 ```
 
-### 2. Compile the Contract
+**Start the Midnight Proof Server container:**
+
 ```bash
-npm run compile
+docker run -d -p 6300:6300 midnightntwrk/proof-server:8.1.0
 ```
 
-### 3. Run the CLI (Local Standalone)
-```bash
-npm run cli
-```
-The CLI will deploy the contract to the local network and present an interactive menu to verify age or view ledger state.
+**Compile the Compact contract:**
 
-### 4. Run the Frontend
 ```bash
-cd bboard-ui
-cp .env.example .env
-# Edit .env with your contract address (from CLI deploy step)
+npm run compact
+```
+
+**Expected output:**
+
+```text
+> @midnight-ntwrk/age-gate-contract@0.1.0 compact
+> compact compile src/age_gate.compact src/managed/age-gate
+
+Compiling src/age_gate.compact...
+Generating ZK circuits and keys...
+  - src/managed/age-gate/zkir/verifyAge.zkir
+  - src/managed/age-gate/zkir/resetLastResult.zkir
+Compilation successful! Artifacts written to src/managed/age-gate
+```
+
+**Start local environment:**
+
+```bash
+npm run setup -- --network undeployed
+```
+
+**Start the development server:**
+
+```bash
 npm run dev
-# Open http://localhost:5173
 ```
+
+Open `http://localhost:5173` in your browser.
 
 ---
 
