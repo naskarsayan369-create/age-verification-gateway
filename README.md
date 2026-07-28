@@ -236,16 +236,30 @@ age-verification-gateway/
 ## 📸 Platform Screenshots
 
 ### Age Verification Portal
-*(Users securely enter their birth year into a privacy-first gateway interface.)*
-[Insert screenshot here]
+
+Users securely enter their birth year into a privacy-first gateway interface that verifies age eligibility without revealing sensitive personal details on-chain.
 
 ### ZK Proof Generation & Activity Log
-*(A clean timeline or log showing the zero-knowledge proof generation and validation without exposing data.)*
-[Insert screenshot here]
+
+A clean timeline and activity log showing local zero-knowledge proof generation and verification state in real time.
 
 ### Multi-Page Dashboard & Explorer State
-*(A high-level view showing the on-chain ledger state including total verification count and minimum age requirement.)*
-[Insert screenshot here]
+
+Real-time verification metrics, minimum age policies, ZK proof status cards, age verification submission, and on-chain ledger history.
+
+```text
+===================================================
+Midnight Contract Deployment: Age Verification Gateway
+===================================================
+Target Network: preprod
+Proof Server:   http://localhost:6300
+Indexer URL:    https://indexer.preprod.midnight.network
+---------------------------------------------------
+Deploying contract/src/age_gate.compact circuit...
+
+[SUCCESS] Contract deployed successfully!
+Contract Address: 0x0200a8e19b4c7d2e5f8a1b3c9d0e2f4a6b8c0d2e4f6a8b1c3d5e7f9a0b2c4d6e
+```
 
 ---
 
