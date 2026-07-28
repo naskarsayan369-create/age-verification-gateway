@@ -301,12 +301,15 @@ const App: React.FC = () => {
         <header style={{
           display: 'flex',
           flexDirection: 'column',
-          padding: '24px 0',
-          borderBottom: '1px solid rgba(139, 92, 246, 0.12)',
+          padding: '24px 0 0 0', // Reduced bottom padding since we use gap and margin
           marginBottom: 48,
           gap: '24px'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', flexWrap: 'wrap', gap: '20px' }}>
+          <div style={{ 
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
+            width: '100%', flexWrap: 'wrap', gap: '20px',
+            paddingBottom: '24px', borderBottom: '1px solid rgba(139, 92, 246, 0.12)'
+          }}>
             <div style={styles.logoSection}>
               <div style={styles.logoIcon}>🛡️</div>
               <div>
@@ -369,10 +372,10 @@ const App: React.FC = () => {
           </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '16px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <nav style={{
-              display: 'flex', gap: 4, alignItems: 'center',
-              padding: '4px', background: 'rgba(255,255,255,0.02)',
+              display: 'flex', gap: 32, alignItems: 'center',
+              padding: '8px 32px', background: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.06)', borderRadius: 50,
               flexWrap: 'wrap', justifyContent: 'center'
             }}>
