@@ -18,7 +18,7 @@
     "compact": "compact compile src/age_gate.compact ./src/managed/age-gate",
     "lint": "eslint src",
     "prepack": "npm run build",
-    "test": "vitest",
+    "test": "npx vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
