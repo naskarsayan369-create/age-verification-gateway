@@ -15,7 +15,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json && cp -Rf ./src/managed ./dist/managed && cp ./src/age_gate.compact ./dist",
     "ci": "npm run compact && npm run typecheck && npm run lint && npm run build && npm run test",
-    "compact": "/home/arnab/.local/bin/compact compile src/age_gate.compact ./src/managed/age-gate",
+    "compact": "compact compile src/age_gate.compact ./src/managed/age-gate",
     "lint": "eslint src",
     "prepack": "npm run build",
     "test": "vitest",
