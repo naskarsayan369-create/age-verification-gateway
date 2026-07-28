@@ -1,17 +1,19 @@
-# 🛡️ Age Verification Gateway
+# 🔗 Age Verification Gateway (AVG)
 
-> **A privacy-preserving age verification dApp built on the Midnight Network.**
-> Prove you meet age requirements without revealing your birthdate or identity.
+A privacy-preserving zero-knowledge age verification platform built on the Midnight Network using Compact smart contracts.
+
+![Midnight](https://img.shields.io/badge/MIDNIGHT-PREPROD-5c65f6?style=for-the-badge) ![Smart Contract](https://img.shields.io/badge/SMART_CONTRACT-COMPACT-9b5cf6?style=for-the-badge) ![Node.js](https://img.shields.io/badge/NODE.JS-%3E%3D22.0.0-16a34a?style=for-the-badge)
+<br>
+![Frontend](https://img.shields.io/badge/FRONTEND-REACT_%2B_VITE-06b6d4?style=for-the-badge) ![License](https://img.shields.io/badge/LICENSE-APACHE_2.0-64748b?style=for-the-badge) [![CI](https://img.shields.io/github/actions/workflow/status/naskarsayan369-create/age-verification-gateway/ci.yml?label=CI%20-%20Age%20Verification%20Gateway&style=for-the-badge)](https://github.com/naskarsayan369-create/age-verification-gateway/actions/workflows/ci.yml)
 
 ---
 
 ## 🚀 Live Demo, Video & Repository
 
-- 🌐 **Live Demo:** [https://age-verification-gateway-hm6wh4rog.vercel.app](https://age-verification-gateway-hm6wh4rog.vercel.app)
-- 📺 **Video Walkthrough:** [https://youtu.be/cSVF8q7BSUM](https://youtu.be/cSVF8q7BSUM)
-- 💻 **Repository:** [GitHub Repository](https://github.com/naskarsayan369-create/age-verification-gateway)
-
-[![Midnight Network](https://img.shields.io/badge/Midnight-v4.1.1-8b5cf6)](https://midnight.network)
+- 🌐 **Live Web Application:** [https://age-verification-gateway-hm6wh4rog.vercel.app](https://age-verification-gateway-hm6wh4rog.vercel.app)
+- 📺 **Demo Video:** [https://youtu.be/cSVF8q7BSUM](https://youtu.be/cSVF8q7BSUM)
+- 📦 **GitHub Repository:** [https://github.com/naskarsayan369-create/age-verification-gateway](https://github.com/naskarsayan369-create/age-verification-gateway)
+- ⚙️ **CI/CD Workflow:** `.github/workflows/ci.yml`
 
 ---
 
