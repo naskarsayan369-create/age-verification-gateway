@@ -29,7 +29,9 @@ jobs:
           compact --version
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install -g npm@latest
+          npm ci --legacy-peer-deps
 
       - name: Compile Compact contract
         run: |
@@ -63,8 +65,21 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
+      - name: Install compact compiler
+        run: |
+          curl -L https://releases.midnight.network/compact/latest/compact-linux-amd64.tar.gz | tar xz -C /tmp
+          sudo mv /tmp/compact /usr/local/bin/compact
+          compact --version
+
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install -g npm@latest
+          npm ci --legacy-peer-deps
+
+      - name: Compile contract (needed for frontend types)
+        run: |
+          cd contract
+          compact compile src/age_gate.compact ./src/managed/age-gate
 
       - name: Type-check frontend
         run: |
@@ -109,7 +124,9 @@ jobs:
           sudo mv /tmp/compact /usr/local/bin/compact
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install -g npm@latest
+          npm ci --legacy-peer-deps
 
       - name: Compile contract (needed for generated types)
         run: |
