@@ -389,15 +389,7 @@ const App: React.FC = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: 6,
-                    padding: '6px 14px', borderRadius: 40,
-                    background: activeTab === tab.id ? 'rgba(139,92,246,0.15)' : 'transparent',
-                    border: activeTab === tab.id ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
-                    color: activeTab === tab.id ? '#c4b5fd' : '#9ca3af',
-                    fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-                    transition: 'all 0.2s', whiteSpace: 'nowrap',
-                  }}
+                  className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
                 >
                   {tab.label}
                 </button>
