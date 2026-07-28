@@ -300,55 +300,24 @@ const App: React.FC = () => {
         {/* ── Header ── */}
         <header style={{
           display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          flexDirection: 'column',
           padding: '24px 0',
           borderBottom: '1px solid rgba(139, 92, 246, 0.12)',
           marginBottom: 48,
-          gap: '20px'
+          gap: '24px'
         }}>
-          <div style={styles.logoSection}>
-            <div style={styles.logoIcon}>🛡️</div>
-            <div>
-              <h1 style={{ fontSize: 18, fontWeight: 700, color: '#f1f0ff', lineHeight: 1.2, letterSpacing: '-0.3px', margin: 0 }}>
-                Age Verification Gateway
-              </h1>
-              <p style={{ fontSize: 11, color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1.2px', marginTop: 2 }}>
-                Midnight Network · ZK Privacy
-              </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', flexWrap: 'wrap', gap: '20px' }}>
+            <div style={styles.logoSection}>
+              <div style={styles.logoIcon}>🛡️</div>
+              <div>
+                <h1 style={{ fontSize: 18, fontWeight: 700, color: '#f1f0ff', lineHeight: 1.2, letterSpacing: '-0.3px', margin: 0 }}>
+                  Age Verification Gateway
+                </h1>
+                <p style={{ fontSize: 11, color: '#6b7280', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1.2px', marginTop: 2 }}>
+                  Midnight Network · ZK Privacy
+                </p>
+              </div>
             </div>
-          </div>
-
-          {/* ── Navigation Tabs ── */}
-          <nav style={{
-            display: 'flex', gap: 4, alignItems: 'center',
-            padding: '4px', background: 'rgba(255,255,255,0.02)',
-            border: '1px solid rgba(255,255,255,0.06)', borderRadius: 50,
-          }}>
-            {[
-              { id: 'home', label: 'Home', icon: '🏠' },
-              { id: 'overview', label: 'Overview', icon: '📖' },
-              { id: 'how-to-use', label: 'How to Use', icon: '🛠️' },
-              { id: 'faq', label: 'FAQ', icon: '❓' },
-              { id: 'history', label: 'History', icon: '🕒' },
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 6,
-                  padding: '6px 14px', borderRadius: 40,
-                  background: activeTab === tab.id ? 'rgba(139,92,246,0.15)' : 'transparent',
-                  border: activeTab === tab.id ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
-                  color: activeTab === tab.id ? '#c4b5fd' : '#9ca3af',
-                  fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-                  transition: 'all 0.2s', whiteSpace: 'nowrap',
-                }}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </nav>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {walletInfo && (
@@ -397,6 +366,40 @@ const App: React.FC = () => {
                 {walletState === 'connecting' ? '⏳ Connecting...' : '🔗 Connect Lace'}
               </button>
             )}
+          </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <nav style={{
+              display: 'flex', gap: 4, alignItems: 'center',
+              padding: '4px', background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.06)', borderRadius: 50,
+              flexWrap: 'wrap', justifyContent: 'center'
+            }}>
+              {[
+                { id: 'home', label: 'Home', icon: '🏠' },
+                { id: 'overview', label: 'Overview', icon: '📖' },
+                { id: 'how-to-use', label: 'How to Use', icon: '🛠️' },
+                { id: 'faq', label: 'FAQ', icon: '❓' },
+                { id: 'history', label: 'History', icon: '🕒' },
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    padding: '6px 14px', borderRadius: 40,
+                    background: activeTab === tab.id ? 'rgba(139,92,246,0.15)' : 'transparent',
+                    border: activeTab === tab.id ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
+                    color: activeTab === tab.id ? '#c4b5fd' : '#9ca3af',
+                    fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
+                    transition: 'all 0.2s', whiteSpace: 'nowrap',
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </nav>
           </div>
         </header>
 
