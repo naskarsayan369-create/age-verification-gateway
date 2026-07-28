@@ -161,22 +161,27 @@ Open `http://localhost:5173` in your browser.
 
 ## 🧪 Automated Test Suite
 
-The contract test suite covers critical verification flows and boundary conditions:
-
-| Test | Description |
-|------|-------------|
-| Initialization | Contract initializes with correct public state |
-| Pass — adult user | Born 1990, year 2025, min 18 → PASS |
-| Fail — underage | Born 2015, year 2025, min 18 → FAIL (proof rejected) |
-| Counter increments | Multiple verifications increment count correctly |
-| Privacy check | Birth year is NOT in ledger state |
-| Reset | `resetLastResult()` clears the boolean |
-| Minimum age 21 | Works for 21+ gate (exact boundary) |
-| Boundary — 1 year under | Born 2008, year 2025, min 18 → FAIL |
+Run the full ZK contract test suite:
 
 ```bash
 npm test
-# Runs all 8 tests via vitest
+```
+
+Expected output:
+
+```text
+ ✓ contract/src/test/age-gate.test.ts
+   ✓ should initialize contract with correct public state
+   ✓ should allow adult user to verify age (pass)
+   ✓ should reject underage user verification (fail)
+   ✓ should correctly increment verification count
+   ✓ should verify birth year is stored privately in witness
+   ✓ should allow admin to reset last result
+   ✓ should enforce minimum age boundary conditions (21+)
+   ✓ should reject boundary case 1 year under minimum age
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
 ```
 
 ---
