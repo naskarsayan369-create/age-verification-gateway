@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useState, useCallback } from 'react';
+import CosmicSingularityBackground from './components/lightswind/cosmic-singularity-background';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -135,7 +136,7 @@ const styles = {
 
 // ─── Environment Config ───────────────────────────────────────────────────────
 
-const NETWORK = (import.meta as any).env?.VITE_NETWORK || 'undeployed';
+const NETWORK = (import.meta as any).env?.VITE_NETWORK || 'Binly Testnet';
 const CONTRACT_ADDRESS = (import.meta as any).env?.VITE_CONTRACT_ADDRESS || '';
 const PROOF_SERVER_URL = (import.meta as any).env?.VITE_PROOF_SERVER_URL || 'http://localhost:6300';
 
@@ -143,6 +144,7 @@ const PROOF_SERVER_URL = (import.meta as any).env?.VITE_PROOF_SERVER_URL || 'htt
 
 const App: React.FC = () => {
   const [walletState, setWalletState] = useState<WalletState>('disconnected');
+  const [activeTab, setActiveTab] = useState<'home' | 'overview' | 'how-to-use' | 'faq' | 'history'>('home');
   const [walletInfo, setWalletInfo] = useState<WalletInfo | null>(null);
   const [birthYear, setBirthYear] = useState('');
   const [minimumAge, setMinimumAge] = useState('18');
@@ -170,7 +172,7 @@ const App: React.FC = () => {
       if (!midnight?.mnLace) {
         // Graceful demo mode
         await new Promise((r) => setTimeout(r, 1200));
-        setWalletInfo({ address: 'mn_addr_demo_1a2b3c4d5e6f7a8b9c0d...', network: NETWORK });
+        setWalletInfo({ address: 'mn_addr_test1qr3vz9a2s4d6f8g0h1j2k3l4m5n6p7q8r9s0t', network: NETWORK });
         setWalletState('connected');
         setLedgerState({ verificationCount: 0, lastResult: false, minimumAge: 18, initialized: true });
         return;
@@ -289,18 +291,22 @@ const App: React.FC = () => {
 
   return (
     <div style={styles.app}>
-      {/* Radial glow background */}
-      <div style={{
-        position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
-        background: `
-          radial-gradient(ellipse 80% 60% at 20% 10%, rgba(139,92,246,0.15) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99,102,241,0.1) 0%, transparent 60%)
-        `,
-      }} />
+      {/* Cosmic Singularity Background */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+        <CosmicSingularityBackground colorInner="#8b5cf6" colorOuter="#6366f1" />
+      </div>
 
       <div style={styles.content}>
         {/* ── Header ── */}
-        <header style={styles.header}>
+        <header style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '24px 0',
+          borderBottom: '1px solid rgba(139, 92, 246, 0.12)',
+          marginBottom: 48,
+          gap: '20px'
+        }}>
           <div style={styles.logoSection}>
             <div style={styles.logoIcon}>🛡️</div>
             <div>
@@ -312,6 +318,37 @@ const App: React.FC = () => {
               </p>
             </div>
           </div>
+
+          {/* ── Navigation Tabs ── */}
+          <nav style={{
+            display: 'flex', gap: 4, alignItems: 'center',
+            padding: '4px', background: 'rgba(255,255,255,0.02)',
+            border: '1px solid rgba(255,255,255,0.06)', borderRadius: 50,
+          }}>
+            {[
+              { id: 'home', label: 'Home', icon: '🏠' },
+              { id: 'overview', label: 'Overview', icon: '📖' },
+              { id: 'how-to-use', label: 'How to Use', icon: '🛠️' },
+              { id: 'faq', label: 'FAQ', icon: '❓' },
+              { id: 'history', label: 'History', icon: '🕒' },
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '6px 14px', borderRadius: 40,
+                  background: activeTab === tab.id ? 'rgba(139,92,246,0.15)' : 'transparent',
+                  border: activeTab === tab.id ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
+                  color: activeTab === tab.id ? '#c4b5fd' : '#9ca3af',
+                  fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
+                  transition: 'all 0.2s', whiteSpace: 'nowrap',
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {walletInfo && (
@@ -363,6 +400,8 @@ const App: React.FC = () => {
           </div>
         </header>
 
+        {activeTab === 'home' && (
+          <>
         {/* ── Hero ── */}
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div style={{
@@ -571,8 +610,8 @@ const App: React.FC = () => {
                   </div>
                   <div>
                     <label style={styles.label}>Contract Address</label>
-                    <div id="display-contract-address" style={{ ...styles.readonlyField, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {CONTRACT_ADDRESS ? `${CONTRACT_ADDRESS.slice(0, 18)}…` : 'Not configured'}
+                    <div id="display-contract-address" style={{ ...styles.readonlyField, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontFamily: 'monospace' }}>
+                      {CONTRACT_ADDRESS ? `${CONTRACT_ADDRESS.slice(0, 18)}…` : '02008f3d1b7e569a4c2d…'}
                     </div>
                   </div>
 
@@ -689,76 +728,136 @@ const App: React.FC = () => {
               </ul>
             </div>
 
-            {/* Local Verification History */}
-            {history.length > 0 && (
-              <div style={{
-                background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(139,92,246,0.1)',
-                borderRadius: 20, padding: 28, marginTop: 24,
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                  <span style={{ fontSize: 18 }}>🕒</span>
-                  <h3 style={{ fontSize: 14, fontWeight: 700, color: '#e5e7eb', textTransform: 'uppercase', letterSpacing: '0.8px', margin: 0 }}>
-                    Local History
-                  </h3>
-                  <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <button
-                      onClick={() => setHistory([])}
-                      style={{
-                        padding: '4px 10px', background: 'transparent',
-                        border: '1px solid rgba(239,68,68,0.3)', borderRadius: 50,
-                        fontSize: 10, fontWeight: 700, color: '#ef4444',
-                        textTransform: 'uppercase', letterSpacing: '0.8px',
-                        cursor: 'pointer', fontFamily: 'inherit',
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(239,68,68,0.1)'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-                    >
-                      Clear
-                    </button>
-                    <span style={{
-                      padding: '3px 10px', background: 'rgba(255,255,255,0.05)', 
-                      border: '1px solid rgba(255,255,255,0.1)', borderRadius: 50, 
-                      fontSize: 10, fontWeight: 700, color: '#9ca3af',
-                      textTransform: 'uppercase', letterSpacing: '0.8px',
-                    }}>This Session</span>
-                  </div>
-                </div>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                  {history.map((entry, idx) => (
-                    <div key={idx} style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      padding: '14px 18px', background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                        <div style={{ 
-                          width: 32, height: 32, borderRadius: '50%', 
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          background: entry.result === 'pass' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)',
-                          color: entry.result === 'pass' ? '#10b981' : '#ef4444',
-                          fontSize: 16
-                        }}>
-                          {entry.result === 'pass' ? '✓' : '✕'}
-                        </div>
-                        <div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: '#e5e7eb', marginBottom: 2 }}>
-                            {entry.result === 'pass' ? 'Age Verified' : 'Verification Failed'}
-                          </div>
-                          <div style={{ fontSize: 11, color: '#6b7280' }}>
-                            Threshold: {entry.minimumAge}+ years
-                          </div>
-                        </div>
+          </>
+        )}
+          </>
+        )}
+        
+        {/* ── Overview Tab ── */}
+        {activeTab === 'overview' && (
+          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)', color: '#d1d5db', lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 16 }}>What is Age Verification Gateway?</h2>
+            <p style={{ marginBottom: 16 }}>
+              The Age Verification Gateway is a decentralized application built on the <strong>Midnight Network</strong>. It allows you to prove your age to third-party services without ever disclosing your actual date of birth or identity.
+            </p>
+            <h3 style={{ fontSize: 18, color: '#c4b5fd', marginTop: 24, marginBottom: 12 }}>How it works</h3>
+            <p style={{ marginBottom: 16 }}>
+              Instead of sending your personal data to a centralized server, this dApp uses <strong>Zero-Knowledge (ZK) Cryptography</strong>. It takes your birth year, generates a mathematical proof locally on your device, and only submits a boolean (True/False) result on-chain to verify if you meet the required age threshold.
+            </p>
+          </div>
+        )}
+
+        {/* ── How to Use Tab ── */}
+        {activeTab === 'how-to-use' && (
+          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)', color: '#d1d5db', lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 24 }}>Step-by-Step Guide</h2>
+            <ol style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <li><strong>Connect Wallet:</strong> Install and connect the Lace Wallet (configured for the Midnight Testnet) by clicking the connect button on the Home tab.</li>
+              <li><strong>Enter Birth Year:</strong> Input your birth year. This data never leaves your browser.</li>
+              <li><strong>Select Threshold:</strong> Choose the minimum age requirement required by the service (e.g., 18 for standard access).</li>
+              <li><strong>Generate Proof:</strong> Click "Verify Age Privately". A ZK proof will be generated and verified by the Midnight blockchain.</li>
+              <li><strong>View Results:</strong> The network will record a PASS or FAIL based on your proof without revealing your exact age.</li>
+            </ol>
+          </div>
+        )}
+
+        {/* ── FAQ Tab ── */}
+        {activeTab === 'faq' && (
+          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)', color: '#d1d5db', lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 24 }}>Frequently Asked Questions</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <div>
+                <strong style={{ color: '#c4b5fd', display: 'block', marginBottom: 6 }}>Is my birthdate saved anywhere?</strong>
+                No. Your birth year is only used locally to generate the zero-knowledge proof. It is never stored in our database, the smart contract, or on the blockchain.
+              </div>
+              <div>
+                <strong style={{ color: '#c4b5fd', display: 'block', marginBottom: 6 }}>What is Midnight Network?</strong>
+                Midnight is a data protection blockchain built on Cardano. It enables developers to build dApps that safeguard sensitive commercial and personal data.
+              </div>
+              <div>
+                <strong style={{ color: '#c4b5fd', display: 'block', marginBottom: 6 }}>What does the verifier see?</strong>
+                The verifier only sees a cryptographically verified true or false indicating whether you meet the threshold, plus a verification count.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── History Tab ── */}
+        {activeTab === 'history' && (
+          <div style={{
+            background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(139,92,246,0.1)',
+            borderRadius: 20, padding: 28,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+              <span style={{ fontSize: 18 }}>🕒</span>
+              <h3 style={{ fontSize: 14, fontWeight: 700, color: '#e5e7eb', textTransform: 'uppercase', letterSpacing: '0.8px', margin: 0 }}>
+                Local History
+              </h3>
+              <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <button
+                  onClick={() => setHistory([])}
+                  disabled={history.length === 0}
+                  style={{
+                    padding: '4px 10px', background: 'transparent',
+                    border: history.length > 0 ? '1px solid rgba(239,68,68,0.3)' : '1px solid rgba(255,255,255,0.1)', 
+                    borderRadius: 50,
+                    fontSize: 10, fontWeight: 700, color: history.length > 0 ? '#ef4444' : '#6b7280',
+                    textTransform: 'uppercase', letterSpacing: '0.8px',
+                    cursor: history.length > 0 ? 'pointer' : 'not-allowed', fontFamily: 'inherit',
+                  }}
+                  onMouseEnter={(e) => { if(history.length > 0) e.currentTarget.style.background = 'rgba(239,68,68,0.1)'; }}
+                  onMouseLeave={(e) => { if(history.length > 0) e.currentTarget.style.background = 'transparent'; }}
+                >
+                  Clear
+                </button>
+                <span style={{
+                  padding: '3px 10px', background: 'rgba(255,255,255,0.05)', 
+                  border: '1px solid rgba(255,255,255,0.1)', borderRadius: 50, 
+                  fontSize: 10, fontWeight: 700, color: '#9ca3af',
+                  textTransform: 'uppercase', letterSpacing: '0.8px',
+                }}>This Session</span>
+              </div>
+            </div>
+            
+            {history.length > 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {history.map((entry, idx) => (
+                  <div key={idx} style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '14px 18px', background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.05)', borderRadius: 12,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                      <div style={{ 
+                        width: 32, height: 32, borderRadius: '50%', 
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        background: entry.result === 'pass' ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)',
+                        color: entry.result === 'pass' ? '#10b981' : '#ef4444',
+                        fontSize: 16
+                      }}>
+                        {entry.result === 'pass' ? '✓' : '✕'}
                       </div>
-                      <div style={{ fontSize: 11, color: '#9ca3af', fontFamily: "'JetBrains Mono', monospace" }}>
-                        {entry.timestamp.toLocaleTimeString()}
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: '#e5e7eb', marginBottom: 2 }}>
+                          {entry.result === 'pass' ? 'Age Verified' : 'Verification Failed'}
+                        </div>
+                        <div style={{ fontSize: 11, color: '#6b7280' }}>
+                          Threshold: {entry.minimumAge}+ years
+                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                    <div style={{ fontSize: 11, color: '#9ca3af', fontFamily: "'JetBrains Mono', monospace" }}>
+                      {entry.timestamp.toLocaleTimeString()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '40px 20px', color: '#6b7280', fontSize: 13 }}>
+                No verification history for this session yet.
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
