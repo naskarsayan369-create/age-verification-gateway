@@ -369,7 +369,7 @@ const App: React.FC = () => {
           </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '16px' }}>
             <nav style={{
               display: 'flex', gap: 4, alignItems: 'center',
               padding: '4px', background: 'rgba(255,255,255,0.02)',
