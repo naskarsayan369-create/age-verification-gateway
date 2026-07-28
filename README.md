@@ -75,12 +75,30 @@ verificationCount.increment(1);
 
 ---
 
-## 🔑 Browser Wallet Connector (window.midnight.mnLace)
+## 🔑 Browser Wallet Connector (`window.midnight.mnLace`)
 
-The frontend integrates directly with the Midnight Lace Wallet for seamless Web3 interaction.
-- Uses `window.midnight.mnLace` to establish connection.
-- Standard connection logic implemented in `bboard-ui/src/App.tsx`.
-- Implements standard connection interface and retrieves the active wallet address.
+```javascript
+// Connect directly to user's Midnight Lace Wallet browser extension
+const connectWallet = async () => {
+  const providers = await getProviders();
+  setIsWalletConnected(true);
+  setWalletAddress(providers.walletProvider.getCoinPublicKey());
+};
+
+// Disconnect and reset all state
+const disconnectWallet = () => {
+  setIsWalletConnected(false);
+  setWalletAddress(null);
+  setIsDemoMode(false);
+};
+```
+
+The wallet connector supports:
+
+- `window.midnight.mnLace` — Midnight Lace extension (primary)
+- `window.midnight.lace` — Legacy Lace extension (fallback)
+- Full connect / disconnect lifecycle with error handling
+- Automatic fallback to Demo Mode when wallet is unavailable
 
 ---
 
