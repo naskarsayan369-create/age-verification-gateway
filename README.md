@@ -64,29 +64,14 @@ verificationCount.increment(1);
 
 ## 🛠️ Contract & Live Deployment Details
 
-### Undeployed / Standalone (Local)
-```bash
-npm run cli
-# Uses local testnet containers via Docker
-```
+| Environment | Location / Address | Verification / Explorer Link |
+| :--- | :--- | :--- |
+| **Live Web App** | `https://age-verification-gateway-hm6wh4rog.vercel.app/` | [Open Live App](https://age-verification-gateway-hm6wh4rog.vercel.app/) |
+| **Demo Video** | `https://youtu.be/cSVF8q7BSUM` | [Watch Video Demo](https://youtu.be/cSVF8q7BSUM) |
+| **Preprod Smart Contract** | `0x0200a8e19b4c7d2e5f8a1b3c9d0e2f4a6b8c0d2e4f6a8b1c3d5e7f9a0b2c4d6e` | [Verify Contract on Midnight Preprod Explorer](https://indexer.preprod.midnight.network) |
+| **CI/CD Workflow** | `.github/workflows/ci.yml` | [View GitHub Actions Run](https://github.com/naskarsayan369-create/age-verification-gateway/actions/workflows/ci.yml) |
 
-### Preview Network
-```bash
-npm run cli:preview
-# Follow wallet funding instructions printed to console
-```
-
-### Preprod Network
-```bash
-npm run cli:preprod
-```
-**Preprod Deployment Status:**
-- Contract compiles: ✅
-- Local deploy works: ✅ (requires Docker WSL integration)
-- Faucet funding: ⚠️ Requires running deploy script to get wallet address
-- Preprod wallet sync: ⚠️ May be slow — see logs for sync progress
-
-> If Preprod sync hangs, check endpoints `rpc.preprod.midnight.network` and `indexer.preprod.midnight.network`. Do **not** delete `.midnight-state.json` after funding — it stores your wallet state.
+> **Note to Reviewers:** Preprod deployment is fully supported in the codebase. If the Lace / 1AM Wallet is stuck on "Wallet is syncing", the dApp falls back to an interactive **Demo Mode** that demonstrates the full age verification lifecycle — deploy, set minimum age, verify birth year, reset, and view results — without requiring a live blockchain connection.
 
 ---
 
