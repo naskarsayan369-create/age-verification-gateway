@@ -733,29 +733,45 @@ const App: React.FC = () => {
         
         {/* ── Overview Tab ── */}
         {activeTab === 'overview' && (
-          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)', color: '#d1d5db', lineHeight: 1.7 }}>
-            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 16 }}>What is Age Verification Gateway?</h2>
-            <p style={{ marginBottom: 16 }}>
-              The Age Verification Gateway is a decentralized application built on the <strong>Midnight Network</strong>. It allows you to prove your age to third-party services without ever disclosing your actual date of birth or identity.
-            </p>
-            <h3 style={{ fontSize: 18, color: '#c4b5fd', marginTop: 24, marginBottom: 12 }}>How it works</h3>
-            <p style={{ marginBottom: 16 }}>
-              Instead of sending your personal data to a centralized server, this dApp uses <strong>Zero-Knowledge (ZK) Cryptography</strong>. It takes your birth year, generates a mathematical proof locally on your device, and only submits a boolean (True/False) result on-chain to verify if you meet the required age threshold.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
+            <div style={{ padding: '32px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)' }}>
+              <div style={{ fontSize: 28, marginBottom: 16 }}>🌐</div>
+              <h2 style={{ fontSize: 22, color: '#f1f0ff', marginBottom: 16, fontWeight: 700 }}>What is Age Verification Gateway?</h2>
+              <p style={{ color: '#d1d5db', lineHeight: 1.7 }}>
+                The Age Verification Gateway is a decentralized application built on the <strong>Midnight Network</strong>. It allows you to prove your age to third-party services without ever disclosing your actual date of birth or identity.
+              </p>
+            </div>
+            <div style={{ padding: '32px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)' }}>
+              <div style={{ fontSize: 28, marginBottom: 16 }}>⚡</div>
+              <h3 style={{ fontSize: 22, color: '#f1f0ff', marginBottom: 16, fontWeight: 700 }}>How it works</h3>
+              <p style={{ color: '#d1d5db', lineHeight: 1.7 }}>
+                Instead of sending your personal data to a centralized server, this dApp uses <strong>Zero-Knowledge Cryptography</strong>. It generates a mathematical proof locally on your device and only submits a pass/fail boolean on-chain.
+              </p>
+            </div>
           </div>
         )}
 
         {/* ── How to Use Tab ── */}
         {activeTab === 'how-to-use' && (
-          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)', color: '#d1d5db', lineHeight: 1.7 }}>
-            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 24 }}>Step-by-Step Guide</h2>
-            <ol style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <li><strong>Connect Wallet:</strong> Install and connect the Lace Wallet (configured for the Midnight Testnet) by clicking the connect button on the Home tab.</li>
-              <li><strong>Enter Birth Year:</strong> Input your birth year. This data never leaves your browser.</li>
-              <li><strong>Select Threshold:</strong> Choose the minimum age requirement required by the service (e.g., 18 for standard access).</li>
-              <li><strong>Generate Proof:</strong> Click "Verify Age Privately". A ZK proof will be generated and verified by the Midnight blockchain.</li>
-              <li><strong>View Results:</strong> The network will record a PASS or FAIL based on your proof without revealing your exact age.</li>
-            </ol>
+          <div style={{ padding: '40px', background: 'rgba(255,255,255,0.02)', borderRadius: 24, border: '1px solid rgba(139,92,246,0.1)' }}>
+            <h2 style={{ fontSize: 24, color: '#f1f0ff', marginBottom: 32, fontWeight: 700 }}>Step-by-Step Guide</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {[
+                { title: 'Connect Wallet', desc: 'Install and connect the Lace Wallet (configured for the Midnight Testnet) by clicking the connect button on the Home tab.', icon: '1️⃣' },
+                { title: 'Enter Birth Year', desc: 'Input your birth year. This data never leaves your browser.', icon: '2️⃣' },
+                { title: 'Select Threshold', desc: 'Choose the minimum age requirement required by the service (e.g., 18 for standard access).', icon: '3️⃣' },
+                { title: 'Generate Proof', desc: 'Click "Verify Age Privately". A ZK proof will be generated and verified by the Midnight blockchain.', icon: '4️⃣' },
+                { title: 'View Results', desc: 'The network will record a PASS or FAIL based on your proof without revealing your exact age.', icon: '5️⃣' },
+              ].map((step, idx) => (
+                <div key={idx} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                  <div style={{ fontSize: 24 }}>{step.icon}</div>
+                  <div>
+                    <h4 style={{ fontSize: 16, fontWeight: 600, color: '#e5e7eb', marginBottom: 4 }}>{step.title}</h4>
+                    <p style={{ color: '#9ca3af', fontSize: 14, lineHeight: 1.6 }}>{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
