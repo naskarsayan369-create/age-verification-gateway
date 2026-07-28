@@ -4,7 +4,7 @@
 > Prove you meet age requirements without revealing your birthdate or identity.
 
 🚀 **Live Demo:** [https://age-verification-gateway-hm6wh4rog.vercel.app](https://age-verification-gateway-hm6wh4rog.vercel.app)
-
+📺 **Video Walkthrough:** [https://youtu.be/cSVF8q7BSUM](https://youtu.be/cSVF8q7BSUM)
 [![CI](https://github.com/yourusername/age-verification-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/age-verification-gateway/actions)
 [![Midnight Network](https://img.shields.io/badge/Midnight-v4.1.1-8b5cf6)](https://midnight.network)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
