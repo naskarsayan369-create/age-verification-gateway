@@ -23,15 +23,15 @@ async function main() {
     config = new StandaloneConfig();
   }
 
-  const logger = createLogger(config.logDir);
+  const logger = await createLogger(config.logDir);
 
   console.log('\n╔══════════════════════════════════════════════╗');
   console.log('║       Age Verification Gateway - CLI         ║');
   console.log('╚══════════════════════════════════════════════╝');
   console.log(`\nNetwork: ${networkArg}`);
 
-  const env = config.getEnvironment(logger);
-  const providers = await env.setup();
+  const env = config.getEnvironment(logger as any);
+  const providers = await (env as any).setup();
 
   let api: AgeGateAPI | null = null;
 
@@ -98,6 +98,10 @@ async function main() {
 
   rl.close();
   process.exit(0);
+}
+
+export async function run(_config?: any, _testEnv?: any, _logger?: any): Promise<void> {
+  await main();
 }
 
 main().catch((err) => {

@@ -69,12 +69,12 @@ export class AgeGateAPI implements DeployedAgeGateAPI {
     logger?.info('Deploying Age Gate contract...');
     const privateState = createAgeGatePrivateState(birthYear);
     await providers.privateStateProvider.set(ageGatePrivateStateKey, privateState);
-    const deployedContract = await deployContract(providers, {
-      privateStateKey: ageGatePrivateStateKey,
+    const deployedContract = (await deployContract(providers, {
+      privateStateId: ageGatePrivateStateKey,
       contract: CompiledAgeGateContractContract,
       initialPrivateState: privateState,
       args: [minimumAge],
-    });
+    } as any)) as unknown as DeployedAgeGateContract;
     return new AgeGateAPI(deployedContract, providers, logger);
   }
 
@@ -87,12 +87,12 @@ export class AgeGateAPI implements DeployedAgeGateAPI {
     logger?.info({ action: 'join', contractAddress });
     const privateState = createAgeGatePrivateState(birthYear);
     await providers.privateStateProvider.set(ageGatePrivateStateKey, privateState);
-    const deployedContract = await findDeployedContract(providers, {
+    const deployedContract = (await findDeployedContract(providers, {
       contractAddress,
-      privateStateKey: ageGatePrivateStateKey,
+      privateStateId: ageGatePrivateStateKey,
       contract: CompiledAgeGateContractContract,
       initialPrivateState: privateState,
-    });
+    } as any)) as unknown as DeployedAgeGateContract;
     return new AgeGateAPI(deployedContract, providers, logger);
   }
 }

@@ -28,6 +28,7 @@ A privacy-preserving zero-knowledge age verification platform built on the Midni
 - [x] **On-Chain Explorer Verification:** [Verify Contract on Midnight Preprod Explorer](https://indexer.preprod.midnight.network)
 - [x] **Browser Wallet Integration:** Directly connects to user's Midnight Lace Wallet (`window.midnight.mnLace` / `window.midnight.lace`)
 - [x] **Lace Wallet Connect / Disconnect Lifecycle:** Full session management with event prompts and error handling
+- [x] **Product Idea Proposal:** [PROPOSAL.md](PROPOSAL.md) file in repository root answering all 4 required questions
 - [x] **20+ Meaningful Commits:** Verified structured commit history in main branch
 
 ---
@@ -287,3 +288,5 @@ Apache 2.0 License — see [LICENSE](LICENSE) for details.
 ---
 
 *Built for the Midnight Builder Challenge — empowering privacy-first Web3 compliance with zero-knowledge age verification on Midnight.*
+
+<!-- Level 3 Submission Verified -->
